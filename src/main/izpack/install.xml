@@ -1,0 +1,112 @@
+<izpack:installation version="5.0"
+	xmlns:izpack="http://izpack.org/schema/installation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+
+<!-- ***************************************************************************************** -->
+
+	<locale>
+		<langpack iso3="bra" />
+	</locale>
+
+	<info>
+		<appname>@{izpack.info.appname}</appname>
+		<appversion>@{izpack.info.appversion}</appversion>
+		<appsubpath>@{izpack.info.appsubpath}</appsubpath>
+		<authors>
+			<author name="Oto Soares Coelho Junior" email="oto.coelho-junior@serpro.gov.br"/>
+		</authors>
+		<url>@{izpack.info.url}</url>
+		<javaversion>1.6</javaversion>
+		<requiresjdk>no</requiresjdk>
+		<singleinstance>no</singleinstance>
+	</info>
+
+<!-- ***************************************************************************************** -->
+
+	<variables>
+		<variable name="DesktopShortcutCheckboxEnabled" value="true"/>
+		<variable name="TargetPanel.dir.windows" value="@{ENV[PROGRAMFILES]}/TestIzPackFolder/@{izpack.info.appsubpath}"/>
+	</variables>
+
+<!-- ***************************************************************************************** -->
+
+	<resources>
+		<res id="customicons.xml" src="install_res_icons.xml" />
+		<res id="Win_shortcutSpec.xml" src="install_res_windows_shortcuts.xml" />
+		<res id="HTMLHelloPanel.info" src="hellopanel.html"/>
+		
+		<res id="JFrameIcon.png" src="images/png/foguete_64px.png"/>
+		<res id="Installer.image" src="images/png/faixa_foguete_128px.png"/>
+	</resources>
+
+<!-- ***************************************************************************************** -->	
+	
+	<guiprefs width="640" height="400" resizable="no">
+		<laf name="substance">
+			<os family="windows" />
+			<os family="unix" />
+			<param name="variant" value="dust-coffee" />
+		</laf>
+	
+		<modifier key="labelGap" value="2"/>
+		<modifier key="layoutAnchor" value="NORTHWEST"/>
+		<modifier key="useHeadingPanel" value="yes"/>
+		<modifier key="headingImageOnLeft" value="yes"/>
+		<modifier key="headingLineCount" value="1"/>
+		<modifier key="headingFontSize" value="1.5"/>
+		<modifier key="headingBackgroundColor" value="0x00ffffff"/>
+		<modifier key="headingPanelCounter" value="text"/>
+		<modifier key="headingPanelCounterPos" value="inHeading"/>
+	</guiprefs>
+
+<!-- ***************************************************************************************** -->	
+	
+	<panels>
+		<panel classname="HTMLHelloPanel" />
+		<panel classname="TargetPanel" />
+		<panel classname="InstallPanel" />
+		<panel classname="ShortcutPanel" />
+		<panel classname="SimpleFinishPanel" />
+	</panels>
+	
+<!-- ***************************************************************************************** -->	
+	
+	<listeners>
+	    <listener classname="RegistryInstallerListener" stage="install" >
+	        <os family="windows"/>
+	    </listener>
+	    <listener classname="RegistryUninstallerListener" stage="uninstall" >
+	        <os family="windows"/>
+	    </listener>
+	</listeners>
+
+<!-- ***************************************************************************************** -->
+
+	<natives>
+		<native type="3rdparty" name="COIOSHelper.dll" stage="both">
+	       <os family="windows"/>
+	    </native>
+	    <native type="3rdparty" name="COIOSHelper_x64.dll" stage="both">
+	       <os family="windows"/>
+	    </native>
+	    
+	    <native type="izpack" name="ShellLink.dll"/>
+	    <native type="izpack" name="ShellLink_x64.dll"/>
+	</natives>
+
+<!-- ***************************************************************************************** -->
+
+	<packs>
+		<pack name="Pack Principal" required="yes">
+			<description>Application Main Files</description>
+			<fileset dir="lib" targetdir="${INSTALL_PATH}/lib" override="true" />
+			<file src="@{izpack.pack.finalname}.jar" targetdir="${INSTALL_PATH}" override="true"/>
+			<file src="images/ico/foguete.ico" targetdir="${INSTALL_PATH}" override="true"/>
+			<file src="images/ico/lixeira.ico" targetdir="${INSTALL_PATH}" override="true"/>
+		</pack>
+	</packs>
+	
+<!-- ***************************************************************************************** -->
+
+</izpack:installation>

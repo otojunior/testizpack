@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.otojunior</groupId>
+	<artifactId>testizpack</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<organization>
+		<name>Organization org.otojunior</name>
+		<url>http://www.org.otojunior</url>
+	</organization>
+
+	<name>Test Izpack</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<plugin.version.izpack-maven-plugin>5.1.1</plugin.version.izpack-maven-plugin>
+		<plugin.version.maven-assembly-plugin>2.6</plugin.version.maven-assembly-plugin>
+		<plugin.version.maven-compiler-plugin>3.1</plugin.version.maven-compiler-plugin>
+		<plugin.version.maven-source-plugin>2.2.1</plugin.version.maven-source-plugin>
+		<plugin.version.maven-javadoc-plugin>2.10.4</plugin.version.maven-javadoc-plugin>
+		<plugin.version.maven-resources-plugin>3.0.1</plugin.version.maven-resources-plugin>
+	
+		<izpack.info.appname>${project.name}</izpack.info.appname>
+		<izpack.info.appversion>${project.version}</izpack.info.appversion>
+		<izpack.info.appsubpath>TestIzPackApplication</izpack.info.appsubpath>
+		<izpack.info.url>${project.organization.url}</izpack.info.url>
+		<izpack.info.javaversion>${plugin.version.java}</izpack.info.javaversion>
+		<izpack.info.company.name>${project.organization.name}</izpack.info.company.name>
+		<izpack.info.company.email>otojunior@gmail.com</izpack.info.company.email>
+		<izpack.pack.finalname>${project.build.finalName}</izpack.pack.finalname>
+		<izpack.staging>${project.build.directory}/${project.build.finalName}-dist</izpack.staging>
+		<izpack.staging.output>${project.build.directory}/${project.build.finalName}-setup</izpack.staging.output>
+	</properties>
+
+	<dependencies>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>1.7.25</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-simple</artifactId>
+		    <version>1.7.25</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>testizpack</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${plugin.version.maven-compiler-plugin}</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${plugin.version.maven-source-plugin}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${plugin.version.maven-javadoc-plugin}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							<mainClass>org.otojunior.testizpack.App</mainClass>
+							<classpathLayoutType>custom</classpathLayoutType>
+							<customClasspathLayout>lib/$${artifact.groupId}/$${artifact.artifactId}.$${artifact.extension}</customClasspathLayout>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>${plugin.version.maven-assembly-plugin}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<descriptors>
+						<descriptor>${basedir}/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${plugin.version.maven-resources-plugin}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${izpack.staging}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/src/main/izpack</directory>
+									<targetPath></targetPath>
+								</resource>
+								<resource>
+									<directory>${project.build.directory}</directory>
+									<targetPath></targetPath>
+									<includes>
+										<include>${project.build.finalName}.jar</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+			    <groupId>org.codehaus.izpack</groupId>
+			    <artifactId>izpack-maven-plugin</artifactId>
+			    <version>5.1.2</version>
+				<executions>
+					<execution>
+						<id>id-izpack-windows</id>
+						<phase>package</phase>
+						<goals>
+							<goal>izpack</goal>
+						</goals>
+						<configuration>
+							<baseDir>${izpack.staging}</baseDir>
+							<outputDirectory>${izpack.staging.output}</outputDirectory>
+							<finalName>${project.build.finalName}-setup-windows</finalName>
+							<mkdirs>true</mkdirs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
