@@ -15,8 +15,8 @@
 		desktop="true" />
 		
 	<shortcut 
-		name="Desinstalar ShadeTest"
-		subgroup="/ShadeSoft" 
+		name="Uninstall TestIzPack"
+		subgroup="/TestIzPackSoft" 
 		target="${INSTALL_PATH}/Uninstaller/uninstaller.jar"
 		iconFile="${INSTALL_PATH}/lixeira.ico" 
 		programGroup="true" />
