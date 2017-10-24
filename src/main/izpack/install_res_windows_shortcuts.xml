@@ -3,12 +3,12 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://izpack.org/schema/shortcuts http://izpack.org/schema/5.0/izpack-shortcuts-5.0.xsd">
  
-	<programGroup defaultName="ShadeTest Cia"/>
+	<programGroup defaultName="TestIzPack Company"/>
 	
 	<shortcut 
-		name="ShadeTest Software" 
-		subgroup="/ShadeSoft"
-		target="${INSTALL_PATH}/shadetest.exe"
+		name="TestIzPack Software" 
+		subgroup="/TestIzPackSoft"
+		target="${INSTALL_PATH}/testizpack.jar"
 		workingDirectory="${INSTALL_PATH}"
 		iconFile="${INSTALL_PATH}/foguete.ico"
 		programGroup="true"
