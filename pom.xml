@@ -96,6 +96,7 @@
 					</execution>
 				</executions>
 				<configuration>
+					<skip>true</skip>
 					<archive>
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>

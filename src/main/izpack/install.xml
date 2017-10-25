@@ -14,7 +14,7 @@
 		<appversion>@{izpack.info.appversion}</appversion>
 		<appsubpath>@{izpack.info.appsubpath}</appsubpath>
 		<authors>
-			<author name="Oto Soares Coelho Junior" email="oto.coelho-junior@serpro.gov.br"/>
+			<author name="Oto Soares Coelho Junior" email="otojunior@gmail.com"/>
 		</authors>
 		<url>@{izpack.info.url}</url>
 		<javaversion>1.6</javaversion>
@@ -32,8 +32,8 @@
 <!-- ***************************************************************************************** -->
 
 	<resources>
-		<res id="customicons.xml" src="install_res_icons.xml" />
-		<res id="Win_shortcutSpec.xml" src="install_res_windows_shortcuts.xml" />
+		<res id="customicons.xml" src="res_icons.xml" />
+		<res id="Win_shortcutSpec.xml" src="res_shortcuts.xml" />
 		<res id="HTMLHelloPanel.info" src="hellopanel.html"/>
 		
 		<res id="JFrameIcon.png" src="images/png/foguete_64px.png"/>
