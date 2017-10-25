@@ -84,15 +84,12 @@
 <!-- ***************************************************************************************** -->
 
 	<natives>
-		<native type="3rdparty" name="COIOSHelper.dll" stage="both">
-	       <os family="windows"/>
-	    </native>
-	    <native type="3rdparty" name="COIOSHelper_x64.dll" stage="both">
-	       <os family="windows"/>
-	    </native>
-	    
-	    <native type="izpack" name="ShellLink.dll"/>
-	    <native type="izpack" name="ShellLink_x64.dll"/>
+		<native type="3rdparty" name="COIOSHelper.dll" stage="both"/>
+	    <native type="3rdparty" name="COIOSHelper_x64.dll" stage="both"/>
+	    <native type="izpack" name="ShellLink.dll" stage="both"/>
+	    <native type="izpack" name="ShellLink_x64.dll" stage="both"/>
+	    <native type="izpack" name="WinSetupAPI.dll" stage="both" uninstaller="true"/>
+        <native type="izpack" name="WinSetupAPI_x64.dll" stage="both" uninstaller="true"/>
 	</natives>
 
 <!-- ***************************************************************************************** -->
