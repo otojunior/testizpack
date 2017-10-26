@@ -33,7 +33,8 @@
 
 	<resources>
 		<res id="customicons.xml" src="res_icons.xml" />
-		<res id="Win_shortcutSpec.xml" src="res_shortcuts.xml" />
+		<!--res id="Win_shortcutSpec.xml" src="res_shortcuts.xml" / -->
+		<res id="shortcutSpec.xml" src="res_shortcuts.xml" />
 		<res id="HTMLHelloPanel.info" src="hellopanel.html"/>
 		
 		<res id="JFrameIcon.png" src="images/png/foguete_64px.png"/>
@@ -85,11 +86,11 @@
 
 	<natives>
 		<native type="3rdparty" name="COIOSHelper.dll" stage="both"/>
-	    <native type="3rdparty" name="COIOSHelper_x64.dll" stage="both"/>
-	    <native type="izpack" name="ShellLink.dll" stage="both"/>
-	    <native type="izpack" name="ShellLink_x64.dll" stage="both"/>
-	    <native type="izpack" name="WinSetupAPI.dll" stage="both" uninstaller="true"/>
-        <native type="izpack" name="WinSetupAPI_x64.dll" stage="both" uninstaller="true"/>
+		<native type="3rdparty" name="COIOSHelper_x64.dll" stage="both"/>
+		<native type="izpack" name="ShellLink.dll" stage="both"/>
+		<native type="izpack" name="ShellLink_x64.dll" stage="both"/>
+		<native type="izpack" name="WinSetupAPI.dll" stage="both" uninstaller="true"/>
+		<native type="izpack" name="WinSetupAPI_x64.dll" stage="both" uninstaller="true"/>
 	</natives>
 
 <!-- ***************************************************************************************** -->
