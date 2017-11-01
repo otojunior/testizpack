@@ -6,6 +6,13 @@
 	<programGroup defaultName="TestIzPack Company"/>
 	
 	<shortcut 
+		name="Uninstall TestIzPack"
+		subgroup="/TestIzPackSoft" 
+		target="${INSTALL_PATH}/Uninstaller/uninstaller.jar"
+		iconFile="${INSTALL_PATH}/lixeira.ico" 
+		programGroup="true" />
+	
+	<shortcut 
 		name="TestIzPack Software" 
 		subgroup="/TestIzPackSoft"
 		target="${INSTALL_PATH}/testizpack.jar"
@@ -13,12 +20,5 @@
 		iconFile="${INSTALL_PATH}/foguete.ico"
 		programGroup="true"
 		desktop="true" />
-		
-	<shortcut 
-		name="Uninstall TestIzPack"
-		subgroup="/TestIzPackSoft" 
-		target="${INSTALL_PATH}/Uninstaller/uninstaller.jar"
-		iconFile="${INSTALL_PATH}/lixeira.ico" 
-		programGroup="true" />
 
 </izpack:shortcuts>
