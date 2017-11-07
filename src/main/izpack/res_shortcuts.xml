@@ -19,6 +19,7 @@
 		workingDirectory="${INSTALL_PATH}"
 		iconFile="${INSTALL_PATH}/foguete.ico"
 		programGroup="true"
-		desktop="true" />
+		desktop="true" 
+		createForAll="true"/>
 
 </izpack:shortcuts>

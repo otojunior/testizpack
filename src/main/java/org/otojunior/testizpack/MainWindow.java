@@ -44,8 +44,11 @@ public class MainWindow extends JFrame {
 				"java.home: " + System.getProperty("java.home") + "\n" +
 				"java.vm.name: " + System.getProperty("java.vm.name") + "\n" +
 				"java.class.version: " + System.getProperty("java.class.version") + "\n" +
+				"os.name: " + System.getProperty("os.name") + "\n" +
+				"os.arch: " + System.getProperty("os.arch") + "\n" +
+				"os.version: " + System.getProperty("os.version") + "\n" +
 				"user.dir: " + System.getProperty("user.dir");
-			
+		
 		JTextArea textArea = new JTextArea(str);
 		textArea.setEditable(false);
 		textArea.setAutoscrolls(false);

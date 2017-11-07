@@ -24,10 +24,27 @@
 
 <!-- ***************************************************************************************** -->
 
+	<conditions>
+		<condition type="java" id="installonx64">
+	        <java>
+	            <class>com.izforge.izpack.util.OsVersion</class>
+	            <field>IS_X64</field>
+	        </java>
+	        <returnvalue type="boolean">true</returnvalue>
+	    </condition>
+	</conditions>
+	
+	<dynamicvariables>
+		<variable name="TargetPanel.dir.windows" value="C:/Program Files/TestIzPackFolder/@{izpack.info.appsubpath}" condition="!installonx64"/>
+		<variable name="TargetPanel.dir.windows" value="C:/Program Files (x86)/TestIzPackFolder/@{izpack.info.appsubpath}" condition="installonx64"/>
+	</dynamicvariables>
+	
 	<variables>
 		<variable name="DesktopShortcutCheckboxEnabled" value="true"/>
-		<variable name="TargetPanel.dir.windows" value="@{ENV[PROGRAMFILES]}/TestIzPackFolder/@{izpack.info.appsubpath}"/>
+		<!-- <variable name="TargetPanel.dir.windows" value="@{ENV[PROGRAMFILES]}/TestIzPackFolder/@{izpack.info.appsubpath}"/> -->
 	</variables>
+
+	
 
 <!-- ***************************************************************************************** -->
 
