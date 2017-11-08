@@ -24,19 +24,21 @@
 
 <!-- ***************************************************************************************** -->
 
+	<jar src="lib/br.gov.serpro.sped.irpjpva/irpjpva-izpack-checainstancia.jar" stage="install"/>
+
 	<conditions>
-		<condition type="java" id="installonx64">
+		<condition type="java" id="isWindowsAmd64Arch">
 	        <java>
-	            <class>com.izforge.izpack.util.OsVersion</class>
-	            <field>IS_X64</field>
+	            <class>br.gov.serpro.sped.irpjpva.checainstancia.VerificaWindowsAmd64Arch</class>
+	            <field>IS_WINDOWS_AMD64_ARCH</field>
 	        </java>
 	        <returnvalue type="boolean">true</returnvalue>
 	    </condition>
 	</conditions>
 	
 	<dynamicvariables>
-		<variable name="TargetPanel.dir.windows" value="C:/Program Files/TestIzPackFolder/@{izpack.info.appsubpath}" condition="!installonx64"/>
-		<variable name="TargetPanel.dir.windows" value="C:/Program Files (x86)/TestIzPackFolder/@{izpack.info.appsubpath}" condition="installonx64"/>
+		<variable name="TargetPanel.dir.windows" value="@{ENV[PROGRAMFILES]}/TestIzPackFolder/@{izpack.info.appsubpath}" condition="!isWindowsAmd64Arch"/>
+		<variable name="TargetPanel.dir.windows" value="@{ENV[PROGRAMFILES(X86)]}/TestIzPackFolder/@{izpack.info.appsubpath}" condition="isWindowsAmd64Arch"/>
 	</dynamicvariables>
 	
 	<variables>

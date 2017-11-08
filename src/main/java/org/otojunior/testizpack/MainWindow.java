@@ -4,6 +4,8 @@
 package org.otojunior.testizpack;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,11 +32,15 @@ public class MainWindow extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(e -> {
-			MainWindow.this.setVisible(false);
-			MainWindow.this.dispose();
-			System.exit(0);
+		btnCancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainWindow.this.setVisible(false);
+				MainWindow.this.dispose();
+				System.exit(0);
+			}
 		});
+		
 		
 		JPanel painelBotoes = new JPanel();
 		painelBotoes.add(btnCancel);
