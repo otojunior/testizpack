@@ -37,8 +37,8 @@
 	</conditions>
 	
 	<dynamicvariables>
-		<variable name="TargetPanel.dir.windows" value="@{ENV[PROGRAMFILES]}/TestIzPackFolder/@{izpack.info.appsubpath}" condition="!isWindowsAmd64Arch"/>
-		<variable name="TargetPanel.dir.windows" value="@{ENV[PROGRAMFILES(X86)]}/TestIzPackFolder/@{izpack.info.appsubpath}" condition="isWindowsAmd64Arch"/>
+		<variable name="TargetPanel.dir.windows" value="${ENV[PROGRAMFILES]}/TestIzPackFolder/@{izpack.info.appsubpath}" condition="!isWindowsAmd64Arch"/>
+		<variable name="TargetPanel.dir.windows" value="${ENV[PROGRAMFILES(X86)]}/TestIzPackFolder/@{izpack.info.appsubpath}" condition="isWindowsAmd64Arch"/>
 	</dynamicvariables>
 	
 	<variables>
