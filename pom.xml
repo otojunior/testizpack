@@ -187,6 +187,41 @@
 						</configuration>
 					</execution>
 				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.izpack</groupId>
+						<artifactId>izpack-panel</artifactId>
+						<version>5.1.2.sped-SNAPSHOT</version>
+					</dependency>
+					<dependency>
+						<groupId>org.codehaus.izpack</groupId>
+						<artifactId>izpack-uninstaller</artifactId>
+						<version>5.1.2.sped-SNAPSHOT</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			
+			<plugin>
+				<groupId>com.akathist.maven.plugins.launch4j</groupId>
+				<artifactId>launch4j-maven-plugin</artifactId>
+				<version>1.7.19</version>
+				<executions>
+					<execution>
+						<id>id-launch4j-instalador</id>
+						<phase>package</phase>
+						<goals>
+							<goal>launch4j</goal>
+						</goals>
+						<configuration>
+							<headerType>gui</headerType>
+							<jar>${izpack.staging.output}/${project.build.finalName}-setup-windows.jar</jar>
+							<outfile>${izpack.staging.output}/testizpack-windows.exe</outfile>
+							<jre>
+								<minVersion>1.6.0</minVersion>
+							</jre>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
